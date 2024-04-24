@@ -10,7 +10,7 @@ const Person = function (firstName, birthYear) {
   this.birthYear = birthYear;
 
   // Never do this
-  //    this.printAge = function () {
+  //    this.calcAge = function () {
   //      console.log(2041 - birthYear);
   //    };
 };
@@ -29,3 +29,29 @@ const jack = new Person('Jack', 1989);
 console.log(ali, jack);
 
 console.log(ali instanceof Person);
+
+///////////////////////////////////////
+// Prototypes
+
+// every function has it's own prototype
+console.log(Person.prototype);
+
+Person.prototype.calcAge = function () {
+  console.log(2032 - this.birthYear);
+};
+
+adel.calcAge();
+jack.calcAge();
+
+console.log(adel.__proto__);
+console.log(adel.__proto__ === Person.prototype);
+
+console.log(Person.prototype.isPrototypeOf(adel)); // true
+console.log(Person.prototype.isPrototypeOf(jack)); // true
+console.log(Person.prototype.isPrototypeOf(Person)); // false
+
+Person.prototype.species = 'Homo Sepiens';
+console.log(adel.species, jack.species);
+
+console.log(adel.hasOwnProperty('firstName')); // true
+console.log(adel.hasOwnProperty('species')); // false
