@@ -111,6 +111,11 @@ class PersonCl {
   get firstname() {
     return this._firstname;
   }
+
+  // Static methods: only available on PersonCl class not it's prototype
+  static hey() {
+    console.log('hey there 👋');
+  }
 }
 
 const jessica = new PersonCl('Jessica Davis', 1998);
@@ -149,3 +154,8 @@ account.latest = 50; // set
 console.log(account.movements);
 
 console.log(jessica.age);
+
+// Static method
+
+PersonCl.hey();
+// jessica.hey();
