@@ -736,7 +736,7 @@ const dogsSorted = dogs
 console.log(dogsSorted);
 */
 
-// 14 CHALLENGE #1
+/* // 14 CHALLENGE #1
 
 const car = function (make, speed) {
   this.make = make;
@@ -759,3 +759,40 @@ bmw.accelerate();
 mercedes.accelerate();
 bmw.brake();
 mercedes.brake();
+*/
+
+// 14 CHALLENGE #2
+
+class carCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  acelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+  }
+
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+
+  set speedUS(speedUs) {
+    this.speed = speedUs * 1.6;
+  }
+}
+
+const ford = new carCl('Ford', 120);
+
+console.log(ford.speedUS);
+ford.acelerate();
+ford.acelerate();
+ford.brake();
+ford.speedUS = 50;
+console.log(ford);
