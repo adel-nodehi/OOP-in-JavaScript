@@ -84,6 +84,7 @@ console.dir(h1);
 console.dir(x => x + 1);
 */
 
+/*
 ///////////////////////////////////////
 // ES6 Classes
 
@@ -135,6 +136,9 @@ jessica.greet();
 
 const walter = new PersonCl('Walter White', 1965);
 
+///////////////////////////////////////
+// Setters and Getters
+
 const account = {
   owner: 'adel',
   movements: [250, 300, 800, 150],
@@ -159,3 +163,30 @@ console.log(jessica.age);
 
 PersonCl.hey();
 // jessica.hey();
+*/
+
+///////////////////////////////////////
+// Object.create
+
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+
+  init: function (firstname, birthYear) {
+    this.firstname = firstname;
+    this.birthYear = birthYear;
+  },
+};
+
+const stiven = Object.create(PersonProto);
+console.log(stiven);
+stiven.name = 'Stiven';
+stiven.birthYear = 1996;
+stiven.calcAge();
+
+console.log(stiven.__proto__ === PersonProto);
+
+const sara = Object.create(PersonProto);
+sara.init('Sara', 1992);
+sara.calcAge();
