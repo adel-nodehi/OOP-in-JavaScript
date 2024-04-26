@@ -97,9 +97,23 @@ class PersonCl {
   calcAge() {
     console.log(2037 - this.birthYear);
   }
+
+  get age() {
+    return 2037 - this.birthYear;
+  }
+
+  // Set property that already exist
+  set firstname(name) {
+    if (name.includes(' ')) this._firstname = name;
+    else alert(`${name} is not valid`);
+  }
+
+  get firstname() {
+    return this._firstname;
+  }
 }
 
-const jessica = new PersonCl('Jessica', 1998);
+const jessica = new PersonCl('Jessica Davis', 1998);
 console.log(jessica);
 jessica.calcAge();
 
@@ -113,3 +127,25 @@ jessica.greet();
 // 1. Classes are NOT hoisted
 // 2. Classes are first-class citizens
 // 3. Classes are executed in strict mode
+
+const walter = new PersonCl('Walter White', 1965);
+
+const account = {
+  owner: 'adel',
+  movements: [250, 300, 800, 150],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  set latest(mov) {
+    this.movements.push(mov);
+  },
+};
+
+console.log(account.latest); // get
+
+account.latest = 50; // set
+console.log(account.movements);
+
+console.log(jessica.age);
