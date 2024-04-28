@@ -845,7 +845,7 @@ tesla.accelerate();
 console.log(tesla);
 */
 
-// 14 CHALLENGE #4
+/*// 14 CHALLENGE #4
 
 class CarCl {
   constructor(make, speed) {
@@ -914,3 +914,4 @@ rivian
 
 console.log(rivian);
 console.log(rivian.speedUS);
+*/
