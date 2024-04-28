@@ -761,7 +761,7 @@ bmw.brake();
 mercedes.brake();
 */
 
-// 14 CHALLENGE #2
+/* // 14 CHALLENGE #2
 
 class carCl {
   constructor(make, speed) {
@@ -796,3 +796,50 @@ ford.acelerate();
 ford.brake();
 ford.speedUS = 50;
 console.log(ford);
+*/
+
+// 14 CHALLENGE #3
+
+const car = function (make, speed) {
+  this.make = make;
+  this.speed = speed;
+};
+
+car.prototype.accelerate = function () {
+  // this.speed += 10;
+  console.log((this.speed += 10));
+};
+
+car.prototype.brake = function () {
+  console.log((this.speed -= 5));
+};
+
+const EV = function (make, speed, charge) {
+  car.call(this, make, speed);
+  this.charge = charge;
+};
+
+// Link the prototype of EV to Car.prototype
+EV.prototype = Object.create(car.prototype);
+
+// EV methods
+EV.prototype.chargeBattery = function (chargeTo) {
+  this.charge = chargeTo;
+};
+
+EV.prototype.accelerate = function () {
+  this.speed += 20;
+  this.charge--;
+  console.log(
+    `${this.make} going at ${this.speed} km/h, with a charge of ${this.charge}%'`
+  );
+};
+
+const tesla = new EV('Tesla', 120, 23);
+tesla.brake();
+tesla.accelerate();
+tesla.accelerate();
+tesla.chargeBattery(90);
+tesla.accelerate();
+
+console.log(tesla);
